@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,5 +18,14 @@ public class TemplateShould {
         Template template = new Template();
 
         assertThat(template.parse("Hello", new HashMap<String, String>())).isEqualTo("Hello");
+    }
+
+    @Test
+    public void test2(){
+        Template template = new Template();
+        Map<String, String> variables = new HashMap<>();
+        variables.put("user", "Carlos");
+
+        assertThat(template.parse("Hello `$user`", variables)).isEqualTo("Hello Carlos");
     }
 }

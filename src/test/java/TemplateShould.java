@@ -1,4 +1,7 @@
 import org.junit.Test;
+
+import java.util.HashMap;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TemplateShould {
@@ -9,4 +12,10 @@ public class TemplateShould {
     "Hello `$user`, today is `$day`",  user=Carlos, day=monday  -> "Hello Carlos, today is monday"
      */
 
+    @Test
+    public void test1(){
+        Template template = new Template();
+
+        assertThat(template.parse("Hello", new HashMap<String, String>())).isEqualTo("Hello");
+    }
 }

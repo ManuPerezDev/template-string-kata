@@ -1,11 +1,17 @@
+import java.util.Iterator;
 import java.util.Map;
 
 public class TemplateParser {
 
     public String parse(String template, Map<String, String> variables) {
         if(!variables.isEmpty()){
-            Map.Entry<String, String> pair = variables.entrySet().iterator().next();
-            return template.replace("`$" + pair.getKey() + "`", pair.getValue());
+            Iterator<Map.Entry<String, String>> iterator = variables.entrySet().iterator();
+            while(iterator.hasNext()){
+                Map.Entry<String, String> pair = iterator.next();
+                template = template.replace("`$" + pair.getKey() + "`", pair.getValue());
+            }
+
+            return template;
         }
         return template;
     }

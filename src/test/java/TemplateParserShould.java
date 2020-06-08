@@ -41,4 +41,13 @@ public class TemplateParserShould {
 
         assertThat(templateParser.parse("Today is `$day`", variables)).isEqualTo("Today is monday");
     }
+
+    @Test
+    public void replace_multiples_variables_into_template(){
+        Map<String, String> variables = new HashMap<>();
+        variables.put("user", "Carlos");
+        variables.put("day", "monday");
+
+        assertThat(templateParser.parse("Hello `$user`, today is `$day`", variables)).isEqualTo("Hello Carlos, today is monday");
+    }
 }

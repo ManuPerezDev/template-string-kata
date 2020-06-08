@@ -8,9 +8,7 @@ public class TemplateParser {
             return template;
         }
 
-        Iterator<Map.Entry<String, String>> iterator = variables.entrySet().iterator();
-        while(iterator.hasNext()){
-            Map.Entry<String, String> pair = iterator.next();
+        for (Map.Entry<String, String> pair : variables.entrySet()) {
             template = template.replace("`$" + pair.getKey() + "`", pair.getValue());
         }
         return template;
